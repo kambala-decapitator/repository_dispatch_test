@@ -14,9 +14,10 @@ jobs:
           macosAssets = [asset for asset in release['assets'] if '1' in asset['name']]
           print(macosAssets)
           open('${{ github.env }}', 'a').write(f"ASSET_URL={macosAssets[0]['browser_download_url']}\n")
+      - uses: actions/checkout@v4
       - name: compute hash
         run: |
-          hash=$(curl -L "$ASSET_URL" | sha256sum)
+          hash=$(curl -L "$ASSET_URL" | sha256sum | cut -d ' ' -f 1)
           echo "hash = $hash"
           echo "$hash" > "asd-${{ toJSON(github.event.client_payload.release.tag_name) }}"
 
