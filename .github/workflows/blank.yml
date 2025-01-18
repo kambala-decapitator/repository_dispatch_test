@@ -20,8 +20,12 @@ jobs:
       - name: compute hash
         run: |
           hash=$(curl -L "$ASSET_URL" | sha256sum | cut -d ' ' -f 1)
-          echo "hash = $hash"
-          echo "$hash" > "asd-${{ toJSON(github.event.client_payload.release.tag_name) }}"
+          #echo "hash = $hash"
+          #echo "$hash" > "asd-${{ toJSON(github.event.client_payload.release.tag_name) }}"
+          sed -E -i \
+            -e "s/version \".+/version \"${{ github.event.client_payload.release.tag_name }}\"/" \
+            -e "s/arm:   \"\\w+\"/arm:   \"$hash\"/" \
+            test-sed
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
