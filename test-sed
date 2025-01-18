@@ -1,3 +1,3 @@
-  version "1.6.3"
-  sha256 arm:   "eaafbe6d2d4c40a79aa4e24467fa7b7c4c3b80b75990645d02fe1b9c5d58e356",
+  version "0.9.9"
+  sha256 arm:   "d7b6c2db2bd8d82a15fa6c9b9c383ddb76f842b2d9fad212b8fc1887626b5cfa",
          intel: "619f1b97bf3d3de144626dbb4f57461447ef81cde8907c4a3eedbabeb0023cc1"
