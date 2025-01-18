@@ -11,7 +11,7 @@ jobs:
         run: |
           import json
           release = json.loads('''${{ toJSON(github.event.client_payload.release) }}''')
-          macosAssets = [asset for asset in release['assets'] if asset['name'].contains('1')]
+          macosAssets = [asset for asset in release['assets'] if '1' in asset['name']]
           print(macosAssets)
           open('${{ env.GITHUB_ENV }}', 'a').write(f"ASSET_URL={macosAssets[0]['browser_download_url']}\n")
       - name: compute hash
