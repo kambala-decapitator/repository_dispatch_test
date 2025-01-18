@@ -1,0 +1,9 @@
+name: CI
+on:
+  repository_dispatch:
+    types: [on-release]
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo received ${{ github.event.client_payload }}
