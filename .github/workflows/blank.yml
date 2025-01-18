@@ -9,7 +9,7 @@ jobs:
       - name: find assets
         run: |
           import json
-          release = json.loads('${{ toJSON(github.event.client_payload.release) }}')
+          release = json.loads('''${{ toJSON(github.event.client_payload.release) }}''')
           macosAssets = [asset['name'] for asset in assets]
           print(macosAssets)
         shell: python
