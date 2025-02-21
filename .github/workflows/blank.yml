@@ -12,7 +12,7 @@ jobs:
         shell: python
         run: |
           import json
-          release = json.loads('''${{ toJSON(github.event.client_payload.release) }}''')
+          release = json.loads(r'''${{ toJSON(github.event.client_payload.release) }}''')
           macosAssets = [asset for asset in release['assets'] if '1' in asset['name']]
           print(macosAssets)
           open('${{ github.env }}', 'a').write(f"ASSET_URL={macosAssets[0]['browser_download_url']}\n")
